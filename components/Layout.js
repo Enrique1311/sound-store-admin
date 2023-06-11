@@ -8,7 +8,7 @@ export default function Layout({ children }) {
 		return (
 			<div className="bg-orange-500 min-h-screen flex">
 				<Navbar />
-				<div className="bg-white flex flex-grow m-2 ml-0 rounded-lg p-4">
+				<div className="bg-white flex-grow m-2 ml-0 rounded-lg p-4">
 					{children}
 				</div>
 			</div>

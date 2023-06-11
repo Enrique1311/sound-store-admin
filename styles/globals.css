@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+input,
+textarea {
+	@apply border-2 border-gray-300 rounded-lg px-3 py-1 w-full;
+	@apply mb-2;
+}
+
+input:focus,
+textarea:focus {
+	@apply border-orange-600;
+}
+
+h1 {
+	@apply text-gray-500 mb-2 text-xl;
+}
+
+label {
+	@apply text-orange-600;
+}
+.btn-primary {
+	@apply bg-orange-500 text-white font-bold p-1 px-4 rounded-lg mt-4;
+}
+
+.btn-primary:hover {
+	@apply text-gray-800;
+}

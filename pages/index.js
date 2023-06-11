@@ -7,7 +7,7 @@ export default function Home() {
 	return (
 		<Layout>
 			<div className="flex flex-1 justify-end">
-				<span className="text-gray-600 h-fit flex gap-1 p-1 px-3 rounded-xl border-2 border-gray-500">
+				<span className="bg-gray-200 text-gray-600 flex gap-1 p-2 px-4 rounded-xl">
 					{" "}
 					<svg
 						xmlns="http://www.w3.org/2000/svg"

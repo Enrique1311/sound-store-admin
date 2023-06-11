@@ -3,8 +3,8 @@ import { useRouter } from "next/router";
 import React from "react";
 
 const Navbar = () => {
-	const inactiveLink = "flex gap-2 font-semibold p-2 rounded-l-lg";
-	const activeLink = inactiveLink + " bg-white text-orange-500";
+	const inactiveLink = "flex gap-2 p-2 rounded-l-lg";
+	const activeLink = inactiveLink + " bg-white text-orange-500 font-bold";
 	const router = useRouter();
 	const { pathname } = router;
 
