@@ -39,7 +39,12 @@ const NewProduct = () => {
 					value={price}
 					onChange={(event) => setPrice(event.target.value)}
 				/>
-				<button className="btn-primary">Guardar</button>
+				<button
+					type=""
+					className="btn-primary"
+				>
+					Guardar
+				</button>
 			</form>
 		</Layout>
 	);
