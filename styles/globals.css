@@ -21,9 +21,29 @@ label {
 	@apply text-orange-600;
 }
 .btn-primary {
-	@apply bg-orange-500 text-white font-bold p-1 px-4 rounded-lg mt-4 border-4 border-orange-500;
+	@apply bg-orange-500 text-white font-bold py-1 px-4 rounded-lg border-2 border-orange-500 inline-flex gap-2;
 }
 
 .btn-primary:hover {
 	@apply text-orange-500 bg-white;
+}
+
+table.basic {
+	@apply w-full mt-4;
+}
+
+table.basic tr td {
+	@apply border border-orange-500 px-2;
+}
+
+table.basic thead tr td {
+	@apply bg-orange-300;
+}
+
+.red-btn {
+	@apply bg-red-500 w-12 mx-3 text-white rounded-md hover:bg-red-700;
+}
+
+.green-btn {
+	@apply bg-green-500 w-12 mx-3 text-white rounded-md hover:bg-green-700;
 }
