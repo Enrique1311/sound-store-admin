@@ -5,7 +5,7 @@ const NewProduct = () => {
 	return (
 		<Layout>
 			<h1>Nuevo producto</h1>
-			<ProcuctForm />;
+			<ProcuctForm />
 		</Layout>
 	);
 };

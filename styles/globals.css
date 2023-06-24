@@ -2,14 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+img {
+	max-width: 100%;
+}
+
 input,
-textarea {
+textarea,
+select {
 	@apply border-2 border-gray-300 rounded-lg px-3 py-1 w-full;
 	@apply mb-2;
 }
 
 input:focus,
-textarea:focus {
+textarea:focus,
+select:focus {
 	@apply border-orange-600;
 }
 

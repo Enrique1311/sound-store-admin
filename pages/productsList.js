@@ -3,7 +3,7 @@ import Layout from "../components/Layout";
 import Link from "next/link";
 import axios from "axios";
 
-const Products = () => {
+const ProductsList = () => {
 	const [products, setProducts] = useState([]);
 
 	useEffect(() => {
@@ -25,14 +25,24 @@ const Products = () => {
 					<tr>
 						<td>
 							<b>Producto</b>
+						</td>{" "}
+						<td>
+							<b>Descripción</b>
+						</td>{" "}
+						<td>
+							<b>Precio</b>
 						</td>
-						<td></td>
+						<td>
+							<b>Acciones</b>
+						</td>
 					</tr>
 				</thead>
 				<tbody>
 					{products.map((product) => (
-						<tr>
+						<tr key={product._id}>
 							<td>{product.name}</td>
+							<td>{product.description}</td>
+							<td>{product.price}</td>
 							<td>
 								<Link
 									className="btn-primary"
@@ -83,4 +93,4 @@ const Products = () => {
 	);
 };
 
-export default Products;
+export default ProductsList;
