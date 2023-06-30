@@ -1,51 +1,37 @@
-import React, { useEffect, useState } from "react";
 import Layout from "../components/Layout";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
-const ProductsList = () => {
+export default function Products() {
 	const [products, setProducts] = useState([]);
-
 	useEffect(() => {
 		axios.get("/api/products").then((response) => {
 			setProducts(response.data);
 		});
 	}, []);
-
 	return (
 		<Layout>
 			<Link
-				href="products/new"
 				className="btn-primary"
+				href={"/products/new"}
 			>
-				Agregar productos
+				Agregar nuevo producto
 			</Link>
-			<table className="basic">
+			<table className="basic mt-2">
 				<thead>
 					<tr>
-						<td>
-							<b>Producto</b>
-						</td>{" "}
-						<td>
-							<b>Descripción</b>
-						</td>{" "}
-						<td>
-							<b>Precio</b>
-						</td>
-						<td>
-							<b>Acciones</b>
-						</td>
+						<td>Producto</td>
+						<td>Acciones</td>
 					</tr>
 				</thead>
 				<tbody>
 					{products.map((product) => (
 						<tr key={product._id}>
 							<td>{product.name}</td>
-							<td>{product.description}</td>
-							<td>{product.price}</td>
 							<td>
 								<Link
-									className="btn-primary"
+									className="btn-default"
 									href={"/products/edit/" + product._id}
 								>
 									<svg
@@ -54,7 +40,7 @@ const ProductsList = () => {
 										viewBox="0 0 24 24"
 										strokeWidth={1.5}
 										stroke="currentColor"
-										className="w-6 h-6"
+										className="w-4 h-4"
 									>
 										<path
 											strokeLinecap="round"
@@ -65,7 +51,7 @@ const ProductsList = () => {
 									Editar
 								</Link>
 								<Link
-									className="btn-primary"
+									className="btn-red"
 									href={"/products/delete/" + product._id}
 								>
 									<svg
@@ -74,7 +60,7 @@ const ProductsList = () => {
 										viewBox="0 0 24 24"
 										strokeWidth={1.5}
 										stroke="currentColor"
-										className="w-6 h-6"
+										className="w-4 h-4"
 									>
 										<path
 											strokeLinecap="round"
@@ -91,6 +77,4 @@ const ProductsList = () => {
 			</table>
 		</Layout>
 	);
-};
-
-export default ProductsList;
+}

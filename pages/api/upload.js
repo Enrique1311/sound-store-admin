@@ -2,14 +2,20 @@ import multiparty from "multiparty";
 import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import fs from "fs";
 import mime from "mime-types";
+import { mongooseConnect } from "../../lib/mongoose";
+import { isAdminRequest } from "../api/auth/[...nextauth]";
 
 const bucketName = "sound-store-admin";
 
 export default async function handle(req, res) {
+	await mongooseConnect();
+	await isAdminRequest(req, res);
+
 	const form = new multiparty.Form();
+
 	const { fields, files } = await new Promise((resolve, reject) => {
-		form.parse(req, (error, fields, files) => {
-			if (error) reject(error);
+		form.parse(req, (err, fields, files) => {
+			if (err) reject(err);
 			resolve({ fields, files });
 		});
 	});
@@ -27,24 +33,20 @@ export default async function handle(req, res) {
 
 	for (const file of files.file) {
 		const ext = file.originalFilename.split(".").pop();
-
-		const newFileName = Date.now() + "." + ext;
-		console.log(ext, file);
-
+		const newFilename = Date.now() + "." + ext;
 		await client.send(
 			new PutObjectCommand({
 				Bucket: bucketName,
-				Key: newFileName,
+				Key: newFilename,
 				Body: fs.readFileSync(file.path),
 				ACL: "public-read",
 				ContentType: mime.lookup(file.path),
 			})
 		);
-		const link = `https://${bucketName}.S3.amazonaws.com/${newFileName}`;
+		const link = `https://${bucketName}.s3.amazonaws.com/${newFilename}`;
 		links.push(link);
 	}
-
-	return res.json({ links: links });
+	return res.json({ links });
 }
 
 export const config = {

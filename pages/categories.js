@@ -1,7 +1,7 @@
 import Layout from "../components/Layout";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { withSwal, swal } from "react-sweetalert2";
+import { withSwal } from "react-sweetalert2";
 
 function Categories({ swal }) {
 	const [editedCategory, setEditedCategory] = useState(null);
@@ -19,7 +19,6 @@ function Categories({ swal }) {
 			setCategories(result.data);
 		});
 	}
-
 	async function saveCategory(ev) {
 		ev.preventDefault();
 		const data = {
@@ -30,7 +29,6 @@ function Categories({ swal }) {
 				values: p.values.split(","),
 			})),
 		};
-
 		if (editedCategory) {
 			data._id = editedCategory._id;
 			await axios.put("/api/categories", data);
@@ -43,7 +41,6 @@ function Categories({ swal }) {
 		setProperties([]);
 		fetchCategories();
 	}
-
 	function editCategory(category) {
 		setEditedCategory(category);
 		setName(category.name);
@@ -55,16 +52,15 @@ function Categories({ swal }) {
 			}))
 		);
 	}
-
 	function deleteCategory(category) {
 		swal
 			.fire({
-				title: "¿Estás seguro?",
-				text: `¿Querés borrar ${category.name}?`,
+				title: "Are you sure?",
+				text: `Do you want to delete ${category.name}?`,
 				showCancelButton: true,
-				cancelButtonText: "Cancelar",
-				confirmButtonText: "¡Sí, Borrar!",
-				confirmButtonColor: "orange",
+				cancelButtonText: "Cancel",
+				confirmButtonText: "Yes, Delete!",
+				confirmButtonColor: "#d55",
 				reverseButtons: true,
 			})
 			.then(async (result) => {
@@ -75,13 +71,11 @@ function Categories({ swal }) {
 				}
 			});
 	}
-
 	function addProperty() {
 		setProperties((prev) => {
 			return [...prev, { name: "", values: "" }];
 		});
 	}
-
 	function handlePropertyNameChange(index, property, newName) {
 		setProperties((prev) => {
 			const properties = [...prev];
@@ -89,7 +83,6 @@ function Categories({ swal }) {
 			return properties;
 		});
 	}
-
 	function handlePropertyValuesChange(index, property, newValues) {
 		setProperties((prev) => {
 			const properties = [...prev];
@@ -97,7 +90,6 @@ function Categories({ swal }) {
 			return properties;
 		});
 	}
-
 	function removeProperty(indexToRemove) {
 		setProperties((prev) => {
 			return [...prev].filter((p, pIndex) => {
@@ -105,20 +97,19 @@ function Categories({ swal }) {
 			});
 		});
 	}
-
 	return (
 		<Layout>
-			<h1>Categories</h1>
+			<h1>Categorías</h1>
 			<label>
 				{editedCategory
-					? `Editar ${editedCategory.name}`
+					? `Editar categoría ${editedCategory.name}`
 					: "Crear nueva categoría"}
 			</label>
 			<form onSubmit={saveCategory}>
 				<div className="flex gap-1">
 					<input
 						type="text"
-						placeholder={"Categoría"}
+						placeholder={"Nombre de la categoría"}
 						onChange={(ev) => setName(ev.target.value)}
 						value={name}
 					/>
@@ -139,13 +130,13 @@ function Categories({ swal }) {
 					</select>
 				</div>
 				<div className="mb-2">
-					<label className="block">Propiedades</label>
+					<label className="block">Categoría principal</label>
 					<button
 						onClick={addProperty}
 						type="button"
 						className="btn-default text-sm mb-2"
 					>
-						Agregar nueva propiedad
+						Agregar nueva categoría principal
 					</button>
 					{properties.length > 0 &&
 						properties.map((property, index) => (
@@ -160,7 +151,7 @@ function Categories({ swal }) {
 									onChange={(ev) =>
 										handlePropertyNameChange(index, property, ev.target.value)
 									}
-									placeholder="Nombre de la propiedad (ejemplo: color)"
+									placeholder="Nombre de la característica (ejemplo: color)"
 								/>
 								<input
 									type="text"
@@ -169,7 +160,7 @@ function Categories({ swal }) {
 										handlePropertyValuesChange(index, property, ev.target.value)
 									}
 									value={property.values}
-									placeholder="Valores separados por coma"
+									placeholder="Valores separados por coma..."
 								/>
 								<button
 									onClick={() => removeProperty(index)}
@@ -200,7 +191,7 @@ function Categories({ swal }) {
 						type="submit"
 						className="btn-primary py-1"
 					>
-						Grabar
+						Guardar
 					</button>
 				</div>
 			</form>
@@ -208,9 +199,9 @@ function Categories({ swal }) {
 				<table className="basic mt-4">
 					<thead>
 						<tr>
-							<td>Categoría</td>
+							<td>Nombre de la categoría</td>
 							<td>Categoría principal</td>
-							<td></td>
+							<td>Acciones</td>
 						</tr>
 					</thead>
 					<tbody>

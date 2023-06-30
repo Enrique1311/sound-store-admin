@@ -6,8 +6,8 @@ export default function Home() {
 
 	return (
 		<Layout>
-			<div className="flex flex-1 justify-end">
-				<span className="bg-gray-200 text-gray-600 flex gap-1 p-2 px-4 rounded-xl">
+			<div className="flex flex-1 justify-start">
+				<span className="bg-white text-gray-600 flex gap-1 p-2 px-4 rounded-xl">
 					{" "}
 					<svg
 						xmlns="http://www.w3.org/2000/svg"

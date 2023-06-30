@@ -3,53 +3,48 @@
 @tailwind utilities;
 
 img {
-	max-width: 100%;
+	max-height: 100%;
 }
-
 input,
 textarea,
 select {
-	@apply border-2 border-gray-300 rounded-lg px-3 py-1 w-full;
+	@apply border-gray-200 rounded-md px-1 w-full py-2;
 	@apply mb-2;
 }
-
 input:focus,
 textarea:focus,
 select:focus {
-	@apply border-orange-600;
+	@apply border-2 border-primary;
 }
-
 h1 {
-	@apply text-gray-500 mb-2 text-xl;
+	@apply text-gray-800 font-bold mb-4 text-xl;
 }
-
 label {
-	@apply text-orange-600;
+	@apply text-gray-600 text-sm;
 }
 .btn-primary {
-	@apply bg-orange-500 text-white font-bold py-1 px-4 rounded-lg border-2 border-orange-500 inline-flex gap-2;
+	@apply bg-primary text-white px-4 py-1 rounded-md shadow-sm;
 }
-
-.btn-primary:hover {
-	@apply text-orange-500 bg-white;
-}
-
 table.basic {
-	@apply w-full mt-4;
+	@apply w-full bg-white shadow-md border-gray-300;
 }
-
+table.basic thead tr td,
+table.basic thead tr th {
+	@apply text-sm text-gray-600 uppercase border-2 border-gray-300 px-4 py-2;
+}
 table.basic tr td {
-	@apply border border-orange-500 px-2;
+	@apply px-4 py-1 border-2 border-gray-300;
 }
-
-table.basic thead tr td {
-	@apply bg-orange-300;
+table.basic a {
+	@apply px-4 rounded-md inline-flex mx-1 items-center gap-1 text-sm py-1;
 }
-
-.red-btn {
-	@apply bg-red-500 w-12 mx-3 text-white rounded-md hover:bg-red-700;
+.btn-default,
+.btn-red {
+	@apply px-4 py-1 rounded-md;
 }
-
-.green-btn {
-	@apply bg-green-500 w-12 mx-3 text-white rounded-md hover:bg-green-700;
+.btn-red {
+	@apply bg-red-500 text-white px-4 py-1 rounded-md shadow-sm;
+}
+.btn-default {
+	@apply bg-white text-gray-800 px-4 py-1 rounded-md border border-gray-400 shadow-sm;
 }
