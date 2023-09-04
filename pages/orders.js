@@ -17,7 +17,7 @@ export default function OrdersPage() {
 					<tr>
 						<th>Fecha</th>
 						<th>Pagado</th>
-						<th>Recipiente</th>
+						<th>Destinatario</th>
 						<th>Productos</th>
 					</tr>
 				</thead>
@@ -27,7 +27,7 @@ export default function OrdersPage() {
 							<tr key={order._id}>
 								<td>{new Date(order.createdAt).toLocaleString()}</td>
 								<td className={order.paid ? "text-green-600" : "text-red-600"}>
-									{order.paid ? "YES" : "NO"}
+									{order.paid ? "SI" : "NO"}
 								</td>
 								<td>
 									{order.name} {order.email}

@@ -24,6 +24,7 @@ label {
 }
 .btn-primary {
 	@apply bg-primary text-white px-4 py-1 rounded-md shadow-sm;
+	@apply hover:opacity-70;
 }
 table.basic {
 	@apply w-full bg-white shadow-md border-gray-300;
@@ -41,10 +42,12 @@ table.basic a {
 .btn-default,
 .btn-red {
 	@apply px-4 py-1 rounded-md;
+	@apply hover:opacity-70;
 }
 .btn-red {
 	@apply bg-red-500 text-white px-4 py-1 rounded-md shadow-sm;
 }
 .btn-default {
 	@apply bg-white text-gray-800 px-4 py-1 rounded-md border border-gray-400 shadow-sm;
+	@apply hover:opacity-70;
 }
